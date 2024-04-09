@@ -1,18 +1,17 @@
+import { NextResponse } from 'next/server'
+
 export async function GET(request) {
   const { Client, Player } = require("spotify-api.js");
-  const { spawn } = require('child_process');
-  const dateActuelle = new Date();
-  const { month, year } = { month: dateActuelle.getMonth() + 1, year: dateActuelle.getFullYear() };
+  // const { spawn } = require('child_process');
+  // const dateActuelle = new Date();
+  // const { month, year } = { month: dateActuelle.getMonth() + 1, year: dateActuelle.getFullYear() };
 
   const client = await Client.create(
     {
-      refreshToken: true,
       token: {
         clientID: process.env.SPOTIFY_CLIENT_ID,
         clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
         refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
-        redirectURL: 'localhost:3000',
-        retryOnCacheLimit: true
       }
     }
   );
@@ -20,8 +19,9 @@ export async function GET(request) {
   const player = new Player(client);
 
   const currentPlayback = await player.getCurrentlyPlaying();
-
-  spawn('spotdl', ['--output', `${month}-${year}`, currentPlayback.item.externalURL.spotify]);
+  // const savedTracks = await client.user.getSavedTracks({ limit: 10 });
+  // console.log(savedTracks[0]);
+  // spawn('spotdl', ['--output', `public/${month}-${year}`, currentPlayback.item.externalURL.spotify]);
 
   const data = {
     isPlaying: currentPlayback.isPlaying,
@@ -34,5 +34,5 @@ export async function GET(request) {
     songUrl: currentPlayback.item.externalURL.spotify,
   };
 
-  return Response.json(data)
+  return NextResponse.json(data)
 }
