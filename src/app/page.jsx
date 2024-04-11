@@ -8,16 +8,20 @@ import useSWR from 'swr'
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
+const millisecondsInADay = 24 * 60 * 60 * 1000;
+
 export default function Home() {
-  const { data } = useSWR(
+  const { data, error } = useSWR(
     '/api/spotify',
     fetcher,
     {
-      refreshInterval: 5,
+      refreshInterval: millisecondsInADay,
     }
   )
 
-  if (!data) return <div>Je dois dormir....</div>;
+  if (error) return <div>Error loading data: {error.message}</div>;
+
+  if (!data) return <div>Loading...</div>;
 
   return (
     <div className=
@@ -40,7 +44,7 @@ export default function Home() {
         <Image src={data.albumImageUrl} alt={data.title} width={250} height={250} className={css({ my: '8' })} />
       </Link>
 
-      <audio controls src="2-2024/grimes_genesis.mp3" className={css({ textAlign: 'center' })} />
+      <audio controls src="" className={css({ textAlign: 'center' })} />
     </div>
   )
 }
