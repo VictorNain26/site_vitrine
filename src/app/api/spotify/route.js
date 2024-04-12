@@ -6,7 +6,6 @@ export async function GET(request) {
   // const dateActuelle = new Date();
   // const { month, year } = { month: dateActuelle.getMonth() + 1, year: dateActuelle.getFullYear() };
 
-
   try {
     const client = await Client.create({
       token: {

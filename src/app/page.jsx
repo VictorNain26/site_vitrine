@@ -8,14 +8,12 @@ import useSWR from 'swr'
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
-const millisecondsInADay = 24 * 60 * 60 * 1000;
-
 export default function Home() {
   const { data, error } = useSWR(
     '/api/spotify',
     fetcher,
     {
-      refreshInterval: millisecondsInADay,
+      refreshInterval: 10000,
     }
   )
 
