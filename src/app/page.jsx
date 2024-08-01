@@ -2,18 +2,17 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import axios from 'axios'
 import { css } from '../../styled-system/css';
 import useSWR from 'swr'
 
-const fetcher = url => axios.get(url).then(res => res.data)
+const fetcher = url => fetch(url, { cache: 'no-store' }).then(r => r.json())
 
 export default function Home() {
   const { data, error } = useSWR(
     '/api/spotify',
     fetcher,
     {
-      refreshInterval: 10000,
+      refreshInterval: 1000,
     }
   )
 
