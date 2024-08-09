@@ -5,16 +5,16 @@ import Link from 'next/link'
 import { css } from '../../styled-system/css';
 import useSWR from 'swr'
 
-const fetcher = url => fetch(url, { cache: 'no-store' }).then(r => r.json())
-
 export default function Home() {
+  const fetcher = (url) => fetch(url).then((r) => r.json());
+
   const { data, error } = useSWR(
     '/api/spotify',
     fetcher,
     {
-      refreshInterval: 1000,
+      refreshInterval: 5000,
     }
-  )
+  );
 
   if (error) return <div>Error loading data: {error.message}</div>;
 
