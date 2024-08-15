@@ -3,11 +3,13 @@ import "./globals.css";
 import { Chivo } from "next/font/google";
 
 const bungeeTint = Chivo({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
   subsets: ['latin'],
 })
 
 export const metadata = {
-  title: "Real Time Spotify",
+  title: "Ourmusic",
   description: "Spotify real time data",
 };
 

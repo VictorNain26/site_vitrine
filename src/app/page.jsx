@@ -29,7 +29,7 @@ export default function Home() {
             <Link href={`${data.songUrl}`} target="_blank" rel="noopener noreferrer" className="mt-3 mb-1">
               <Image src={data.albumImageUrl} alt={data.title} width={500} height={500} className='rounded' />
             </Link>
-            <p className="text-lg">{data.album}</p>
+            <p className="text-lg italic">{data.album}</p>
           </>
         ) : (
           <>
