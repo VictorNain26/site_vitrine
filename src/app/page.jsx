@@ -17,7 +17,7 @@ export default function Home() {
 
   if (error) return <div>Error loading data: {error.message}</div>;
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div className='flex justify-center animate-pulse text-4xl mt-16'>Patience...</div>;
 
   return (
     <div className="flex flex-col items-center my-11">
