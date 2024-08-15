@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { css } from '../../styled-system/css';
 import useSWR from 'swr'
 
 export default function Home() {
@@ -12,7 +11,7 @@ export default function Home() {
     '/api/spotify',
     fetcher,
     {
-      refreshInterval: 5000,
+      refreshInterval: 10000,
     }
   );
 
@@ -21,27 +20,23 @@ export default function Home() {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div className=
-      {
-        css(
-          { display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            m: '8',
-            fontSize: "2xl",
-            fontWeight: 'bold'
-          }
+    <div className="flex flex-col items-center my-11">
+      { data.isPlaying ? (
+          <>
+            <p className="text-3xl text-red-500 fw-bold mb-7">En Direct</p>
+            <p><span className='fw-bolder'>Artiste:</span> {data.artist}</p>
+            <p>Album: {data.album}</p>
+            <Link href={`${data.songUrl}`} target="_blank" rel="noopener noreferrer" className="">
+              <Image src={data.albumImageUrl} alt={data.title} width={500} height={500} />
+            </Link>
+            <p className='text-2xl mt-3'>{data.title}</p>
+          </>
+        ) : (
+          <>
+            <p className="text-red text-3xl">Je dois dormir....</p>
+          </>
         )
       }
-    >
-      <p>{data.artist}</p>
-      <p>{data.title}</p>
-      <p>{data.album}</p>
-      <Link href={`${data.songUrl}`} target="_blank" rel="noopener noreferrer" className={css({ textAlign: 'center' })}>
-        <Image src={data.albumImageUrl} alt={data.title} width={250} height={250} className={css({ my: '8' })} />
-      </Link>
-
-      <audio controls src="" className={css({ textAlign: 'center' })} />
     </div>
   )
 }

@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
+import { put } from '@vercel/blob';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
   const { Client, Player } = require("spotify-api.js");
-  // const { spawn } = require('child_process');
-  // const dateActuelle = new Date();
-  // const { month, year } = { month: dateActuelle.getMonth() + 1, year: dateActuelle.getFullYear() };
 
   try {
     const client = await Client.create({
@@ -42,8 +40,15 @@ export async function GET(request) {
     console.error("Error occurred:", error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
+}
 
-  // const savedTracks = await client.user.getSavedTracks({ limit: 10 });
-  // console.log(savedTracks[0]);
-  // spawn('spotdl', ['--output', `public/${month}-${year}`, currentPlayback.item.externalURL.spotify]);
+export async function POST(request) {
+  // const { spawn } = require('child_process');
+  // spawn('spotdl', ['--output', `public/musiques`, currentPlayback.item.externalURL.spotify]);
+
+  try {
+  } catch (error) {
+    console.error("Error occurred:", error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 }
