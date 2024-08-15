@@ -23,13 +23,13 @@ export default function Home() {
     <div className="flex flex-col items-center my-11">
       { data.isPlaying ? (
           <>
-            <p className="text-3xl text-red-500 fw-bold mb-7">En Direct</p>
-            <p><span className='fw-bolder'>Artiste:</span> {data.artist}</p>
-            <p>Album: {data.album}</p>
-            <Link href={`${data.songUrl}`} target="_blank" rel="noopener noreferrer" className="">
-              <Image src={data.albumImageUrl} alt={data.title} width={500} height={500} />
+            <p className="text-3xl text-red-700 fw-bold mb-7 animate-pulse">En Direct</p>
+            <p className="text-3xl">{data.artist}</p>
+            <p className="text-3xl">{data.title}</p>
+            <Link href={`${data.songUrl}`} target="_blank" rel="noopener noreferrer" className="mt-3 mb-1">
+              <Image src={data.albumImageUrl} alt={data.title} width={500} height={500} className='rounded' />
             </Link>
-            <p className='text-2xl mt-3'>{data.title}</p>
+            <p className="text-lg">{data.album}</p>
           </>
         ) : (
           <>
