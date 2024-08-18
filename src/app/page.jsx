@@ -20,7 +20,7 @@ export default function Home() {
   if (!data) return <div className='flex justify-center animate-pulse text-4xl mt-16'>Patience...</div>;
 
   return (
-    <div className="flex flex-col items-center my-11">
+    <div className="flex flex-col items-center my-11 mx-8">
       { data.isPlaying ? (
           <>
             <p className="text-3xl text-red-700 fw-bold mb-7 animate-pulse">En Direct</p>
