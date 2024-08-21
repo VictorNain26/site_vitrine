@@ -42,7 +42,7 @@ export default function Home() {
           )
         }
 
-        <h3 className={`inline rounded text-3xl cursor-pointer my-8 p-4 ${showTracks ? "bg-slate-950" : ""}`} onClick={toggleTracks}>Dernieres musiques</h3>
+        <h3 className={`inline rounded text-3xl cursor-pointer my-8 p-4 ${showTracks ? "bg-slate-950" : ""}`} onClick={toggleTracks}>Dernieres écoutes</h3>
       </div>
 
       
