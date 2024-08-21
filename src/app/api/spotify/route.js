@@ -16,6 +16,7 @@ export async function GET(request) {
 
     const player = new Player(client);
 
+    const recentlyPlayed = await player.getRecentlyPlayed({ limit: 5 });
     const currentPlayback = await player.getCurrentlyPlaying();
 
     if (currentPlayback) {
@@ -28,6 +29,7 @@ export async function GET(request) {
           .join(', '),
         albumImageUrl: currentPlayback.item.album.images[0].url,
         songUrl: currentPlayback.item.externalURL.spotify,
+        recentlyPlayed: recentlyPlayed,
         message: "Boum Boum la musique",
         status: 200
       };
