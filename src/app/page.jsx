@@ -42,12 +42,12 @@ export default function Home() {
           )
         }
 
-        <h3 className={`inline rounded text-3xl cursor-pointer my-8 p-4 ${showTracks ? "bg-slate-950" : ""}`} onClick={toggleTracks}>Dernieres écoutes</h3>
+        <h3 className={`inline rounded text-3xl cursor-pointer my-8 p-4 ${showTracks ? "bg-slate-950" : ""}`} onClick={toggleTracks}>Dernières écoutes</h3>
       </div>
 
       
       <section className={`fixed top-0 bg-slate-900 py-11 px-8 md:px-0 right-0 text-left lg:right-8 h-full w-full sm:w-3/5 md:w-2/5 xl:w-1/5 ${showTracks ? "block" : "hidden"}`}> 
-        <h3 className="text-3xl mb-8">5 dernieres...</h3>
+        <h3 className="text-3xl mb-8">5 Dernières...</h3>
         
         <span className="text-3xl mb-8 cursor-pointer flex md:hidden" onClick={toggleTracks}>FERMER</span>
         
