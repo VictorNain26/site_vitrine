@@ -23,7 +23,6 @@ export async function GET(request) {
       const data = {
         isPlaying: currentPlayback.isPlaying,
         title: currentPlayback.item.name,
-        album: currentPlayback.item.album.name,
         artist: currentPlayback.item.album.artists
           .map((artist) => artist.name)
           .join(', '),
