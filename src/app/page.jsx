@@ -55,7 +55,7 @@ export default function Home() {
               </section>
             </>
           ) : (
-            <p className="text-red text-3xl text-center">Je dois sûrement dormir...</p>
+            <p className="text-red text-3xl text-center">Je dois sûrement dormir.</p>
           )
         }
 
