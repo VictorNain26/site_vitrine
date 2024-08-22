@@ -46,7 +46,7 @@ export default function Home() {
                   <Link key={item.track.id} href={`${item.track.externalURL.spotify}`} target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded hover:bg-slate-950">
                     <Image src={item.track.album.images[0].url} alt={item.track.title} width={60} height={60} className="object-cover rounded me-4" />
 
-                    <div className="w-full">
+                    <div className="truncate">
                       <p className="text-lg truncate">{item.track.name}</p>
                       <p className="text-lg italic truncate">{item.track.artists.map((artist) => artist.name).join(", ")}</p>
                     </div>
