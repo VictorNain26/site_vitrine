@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { put } from '@vercel/blob';
+const { spawn } = require('child_process');
 export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
@@ -33,21 +33,12 @@ export async function GET(request) {
         status: 200
       };
 
+      // spawn('spotdl', ['--output', `public/musiques`, currentPlayback.item.externalURL.spotify]);
+
       return NextResponse.json(data);
     } else {
       return NextResponse.json({ error: 'No current playback' }, { status: 404 });
     }
-  } catch (error) {
-    console.error("Error occurred:", error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  }
-}
-
-export async function POST(request) {
-  // const { spawn } = require('child_process');
-  // spawn('spotdl', ['--output', `public/musiques`, currentPlayback.item.externalURL.spotify]);
-
-  try {
   } catch (error) {
     console.error("Error occurred:", error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
